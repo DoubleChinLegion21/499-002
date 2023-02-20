@@ -61,4 +61,3 @@ main()
   wait(0);
   exit(0);
 }
-// This process ensures prime numbers found in process 1 are correct and then writes them to terminal to be printed. 
