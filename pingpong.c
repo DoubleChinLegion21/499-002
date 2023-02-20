@@ -1,3 +1,7 @@
+// Caleb Rivera
+// criver7@gmu.edu
+// G01114348
+
 //imports
 #include "kernel/types.h"
 #include "kernel/stat.h"
