@@ -23,20 +23,11 @@ copy_argv(char **ori_argv, int ori_argc, char *new_argv, char **argv)
   memcpy(argv[k++], new_argv, strlen(new_argv) + 1);
 }
 
-
-void
-print(char **s, int n)
-{
-  for (int i = 0; i < n; i++) {
-    printf("%s\n", s[i]);
-  }
-}
-
 int 
 main(int argc, char *argv[])
 {
   if (argc <= 1) {
-    fprintf(2, "Usage: xargx command [arg ...]\n");
+    fprintf(2, "To use xargx command, do first_command [args1,2...] | xargs second_command [args1,2...]\n");
     exit(1);
   }
 
@@ -55,8 +46,8 @@ main(int argc, char *argv[])
       i = 0;
 
       int pid = fork();
-      if (pid == 0) {
-        //child
+      //If requirements are satsfied then the message in xv6 can be copied using echo and then xargs can be used to reply to the test file created.
+      if (pid == 0) { //child process
         int cmd_argc = argc;
         
         char *cmd_argv[MAXARG];
@@ -69,8 +60,7 @@ main(int argc, char *argv[])
         exit(0);
       } else {
         wait((int *)0);
-      }
-      //If requirements are satsfied then the message in xv6 can be copied using echo and then xargs can be used to reply to the test file created.
+      } 
     } else {
       //if the arguments length is in total longer than 512, than the arguments wont fit in the variables.
       if (!ignore && i >= MAX_LEN_OF_ARG - 1) {
